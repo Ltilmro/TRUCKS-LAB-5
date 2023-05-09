@@ -5,6 +5,7 @@
 -- Table: auto
 CREATE TABLE auto (
     id integer NOT NULL CONSTRAINT auto_pk PRIMARY KEY,
+    Car_number text NOT NULL,
     brand text NOT NULL,
     Start_mileage real NOT NULL,
     Load_copasity real NOT NULL
@@ -47,31 +48,31 @@ CREATE TABLE user (
 );
 
 -- Заполнение таблицы auto
-INSERT INTO auto (id, brand, Start_mileage, Load_copasity)
+INSERT INTO auto (id, Car_number, brand, Start_mileage, Load_copasity)
 VALUES
-    (1, 'Toyota', 10000, 1500),
-    (2, 'Honda', 20000, 1200),
-    (3, 'Ford', 30000, 1700),
-    (4, 'Chevrolet', 40000, 1400),
-    (5, 'Nissan', 50000, 1100),
-    (6, 'Mazda', 60000, 1300),
-    (7, 'Kia', 75000, 1600),
-    (8, 'Hyundai', 80000, 1800),
-    (9, 'Volkswagen', 9000, 1900),
-    (10, 'BMW', 100, 2000),
-    (11, 'Mercedes-Benz', 11000, 2200),
-    (12, 'Audi', 12000, 2300),
-    (13, 'Lexus', 1300, 2400),
-    (14, 'Infiniti', 0, 2500),
-    (15, 'Tesla', 15000, 2600),
-    (16, 'Porsche', 16000, 2700),
-    (17, 'Ferrari', 17000, 2800),
-    (18, 'Lamborghini', 18000, 2900),
-    (19, 'Bugatti', 19000, 3000),
-    (20, 'McLaren', 20000, 3100);
-
+    (1, 'AB1234', 'Toyota', 5000, 1000),
+    (2, 'BC2345', 'Honda', 6000, 800),
+    (3, 'CD3456', 'Mazda', 7000, 1200),
+    (4, 'DE4567', 'Ford', 8000, 1500),
+    (5, 'EF5678', 'Chevrolet', 9000, 1800),
+    (6, 'FG6789', 'Nissan', 10000, 900),
+    (7, 'GH7890', 'Hyundai', 11000, 1100),
+    (8, 'HI8901', 'Kia', 12000, 1000),
+    (9, 'IJ9012', 'Subaru', 13000, 1300),
+    (10, 'JK0123', 'Volkswagen', 14000, 1400),
+    (11, 'KL1234', 'Audi', 15000, 1100),
+    (12, 'LM2345', 'Mercedes-Benz', 16000, 1600),
+    (13, 'MN3456', 'BMW', 17000, 1200),
+    (14, 'NO4567', 'Lexus', 18000, 1100),
+    (15, 'OP5678', 'Infiniti', 19000, 1000),
+    (16, 'PQ6789', 'Mitsubishi', 20000, 800),
+    (17, 'QR7890', 'Peugeot', 21000, 900),
+    (18, 'RS8901', 'Renault', 22000, 1300),
+    (19, 'ST9012', 'Volvo', 23000, 1400),
+    (20, 'TU0123', 'Jeep', 24000, 1500);
+    
 -- Заполнение таблицы driver
-INSERT INTO driver (id, last_name, category, expearence, address, birth_year)
+INSERT INTO driver (id, Last_name, Category, Expearence, Address, Birth_year)
 VALUES
     (1, 'Smith', 'A', 3, '123 Main St', '1990-01-01'),
     (2, 'Johnson', 'A', 5, '456 Elm St', '1985-01-01'),
@@ -87,7 +88,7 @@ VALUES
     (12, 'Jackson', 'C', 25, '147 Banana St', '1935-01-01');
 
 -- Заполнение таблицы user
-INSERT INTO user (id, login, HPasword, admRule, driver_id)
+INSERT INTO user (id, Login, HPasword, AdmRule, Driver_id)
 VALUES
     (1, 'user1', '916667321108f9b35c76f5f3c19c863d9b922193b847d2f8ca5ec83f218cfb82', FALSE, 1),
     (2, 'user2', '87bc38d58c2a371ad982d9b2baeae01502177bddec9cd6a5ec19b64534bbf43c', FALSE, 2),
@@ -106,7 +107,7 @@ VALUES
     (15, 'adm', '86f65e28a754e1a71b2df9403615a6c436c32c42a75a10d02813961b86f1e428', TRUE, NULL);
 
 -- Заполнение таблицы rent_order
-INSERT INTO rent_order (id, date, driver_id, auto_id, mileage, weight, price)
+INSERT INTO rent_order (id, Date, Driver_id, Auto_id, Mileage, Weight, Price)
 VALUES
     (1, '2023-05-01', 1, 1, 12000, 2000, 800),
     (2, '2023-05-02', 2, 2, 22000, 1500, 700),
