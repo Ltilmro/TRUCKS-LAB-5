@@ -26,7 +26,7 @@ WHERE id = @user_dr_id;
 
 
 -- 2  по водителю, выполнившему наименьшее количество поездок, – все сведения
---и количество полученных денег; а если водитель совершивших минимальное количество поездок несколько?
+--и количество полученных денег;
 with res as
 (select d.Last_name, d.Category, d.Expearence, d.Address, d.Birth_year, count(driver_id) as num, ifnull(sum(price)*0.2, 0) as total
 from driver d left join rent_order 
@@ -34,8 +34,7 @@ on d.id = driver_id
 group by driver_id)
 select r.Last_name, r.Category, r.Expearence, r.Address, r.Birth_year, r.total
 from res r
-where num = (select min(num) from res) 
-limit 1; --?
+where num = (select min(num) from res);
 --tested~~
  
 --(*):
@@ -70,10 +69,6 @@ group by driver_id;
 --tested
 
 --по автомашине с наибольшим общим пробегом – все сведения;
-SELECT Car_number, brand, Start_mileage, Load_copasity 
-FROM auto 
-WHERE id = (SELECT auto_id FROM rent_order GROUP BY auto_id ORDER BY SUM(mileage) DESC LIMIT 1);
-
 with res as 
 (SELECT Car_number, brand, Start_mileage, Load_copasity, a.start_mileage + ifnull(SUM(o.mileage), 0) AS total_distance
 FROM auto a left join rent_order o 
@@ -98,7 +93,7 @@ Arguments:
 @start_date = 'yyyy-mm-dd'
 @end_date = 'yyyy-mm-dd'
 
-CREATE VIEW special_table
+CREATE TEMP TA special_table
 AS 
 SELECT d.last_name, COUNT(*) AS total_trips, SUM(weight) AS total_cargo_weight, SUM(price)*0.2 AS total_earnings 
 FROM driver d left join rent_order o
