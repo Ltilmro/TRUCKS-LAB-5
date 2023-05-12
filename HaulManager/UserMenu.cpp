@@ -10,7 +10,7 @@ void UserMenu::runMenu(std::ostream& os,std::istream& is,LoginMenu l)
 		if (moption == "1")
 		{
 			os << "1 for help, 2 for haul list, 3 for vehicle data\n";
-			os << "4 for driver data, 5 for min mileage, 0 to quit\n";
+			os << "4 for driver data, 5 for max mileage, 0 to quit\n";
 			//os<<q.help();
 		}
 		else if (moption == "2")
@@ -32,7 +32,7 @@ void UserMenu::runMenu(std::ostream& os,std::istream& is,LoginMenu l)
 		}
 		else if (moption == "5")
 		{
-			//os<<q.minMileage(l);
+			//os<<q.maxMileage(l);
 		}
 		else if (moption == "0")
 		{
